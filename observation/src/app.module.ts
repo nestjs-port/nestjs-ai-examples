@@ -1,6 +1,6 @@
 import { Module } from "@nestjs/common";
 import { TransformersEmbeddingModelModule } from "@nestjs-ai/model-transformers";
-import { ObservationModule } from "@nestjs-ai/observation";
+import { ObservationModule } from "@nestjs-port/observation";
 import { metrics, trace } from "@opentelemetry/api";
 import { AppController } from "./app.controller";
 import { EmbeddingService } from "./embedding.service";

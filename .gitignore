@@ -125,6 +125,9 @@ dist
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 
+# JetBrains IDE metadata
+.idea/
+
 # yarn v3
 .pnp.*
 .yarn/*
