@@ -3,6 +3,11 @@
 This is a self-contained NestJS sample for local embedding generation and OpenTelemetry observation.
 It is not part of the npm workspace. Run it directly from this folder.
 
+## Runtime requirements
+
+- Node.js `22.12.0` or newer
+- Docker and Docker Compose for the observability stack
+
 ## What it shows
 
 - A free local embedding model from `@nestjs-ai/model-transformers`
