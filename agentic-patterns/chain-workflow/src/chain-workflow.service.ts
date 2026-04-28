@@ -1,7 +1,7 @@
-import { Inject, Injectable } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 import { ChatClient } from "@nestjs-ai/client-chat";
-import { CHAT_MODEL_TOKEN } from "@nestjs-ai/commons";
 import type { ChatModel } from "@nestjs-ai/model";
+import { InjectChatModel } from "@nestjs-ai/platform";
 
 export interface ChainWorkflowStepResult {
   index: number;
@@ -71,7 +71,7 @@ export class ChainWorkflowService {
    * @param chatClient the NestJS AI chat client used to make LLM calls
    */
   constructor(
-    @Inject(CHAT_MODEL_TOKEN)
+    @InjectChatModel()
     chatModel: ChatModel,
   ) {
     this.chatClient = ChatClient.create(chatModel);

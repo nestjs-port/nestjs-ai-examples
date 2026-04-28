@@ -1,4 +1,5 @@
 import { Module } from "@nestjs/common";
+import { NestAiModule } from "@nestjs-ai/platform";
 import { OpenAiChatModelModule } from "@nestjs-ai/model-openai";
 // import { AnthropicChatModelModule } from "@nestjs-ai/model-anthropic";
 import { EvaluatorOptimizer } from "./evaluator-optimizer";
@@ -15,6 +16,7 @@ function requireOpenAiApiKey(): string {
 
 @Module({
   imports: [
+    NestAiModule.forRoot(),
     OpenAiChatModelModule.forFeatureAsync({
       useFactory: async () => ({
         apiKey: requireOpenAiApiKey(),

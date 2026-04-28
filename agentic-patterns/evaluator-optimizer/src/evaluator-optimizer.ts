@@ -1,7 +1,7 @@
-import { Inject, Injectable } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 import { ChatClient } from "@nestjs-ai/client-chat";
-import { CHAT_MODEL_TOKEN } from "@nestjs-ai/commons";
 import type { ChatModel } from "@nestjs-ai/model";
+import { InjectChatModel } from "@nestjs-ai/platform";
 
 /**
  * Workflow: <b>Evaluator-optimizer</b>
@@ -149,7 +149,7 @@ Use "PASS" only if all criteria are met with no improvements needed.`;
   private readonly evaluatorPrompt: string;
 
   constructor(
-    @Inject(CHAT_MODEL_TOKEN)
+    @InjectChatModel()
     chatModel: ChatModel,
     generatorPrompt = EvaluatorOptimizer.DEFAULT_GENERATOR_PROMPT,
     evaluatorPrompt = EvaluatorOptimizer.DEFAULT_EVALUATOR_PROMPT,

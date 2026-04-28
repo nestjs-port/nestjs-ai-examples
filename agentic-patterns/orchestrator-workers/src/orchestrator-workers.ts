@@ -1,7 +1,7 @@
-import { Inject, Injectable } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 import { ChatClient } from "@nestjs-ai/client-chat";
-import { CHAT_MODEL_TOKEN } from "@nestjs-ai/commons";
 import type { ChatModel } from "@nestjs-ai/model";
+import { InjectChatModel } from "@nestjs-ai/platform";
 
 /**
  * Pattern: <b>Orchestrator-workers</b>
@@ -139,7 +139,7 @@ Guidelines: {task_description}`;
    * @param chatClient The ChatClient to use for LLM interactions
    */
   constructor(
-    @Inject(CHAT_MODEL_TOKEN)
+    @InjectChatModel()
     chatModel: ChatModel,
     orchestratorPrompt = OrchestratorWorkers.DEFAULT_ORCHESTRATOR_PROMPT,
     workerPrompt = OrchestratorWorkers.DEFAULT_WORKER_PROMPT,

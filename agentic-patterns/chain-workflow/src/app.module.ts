@@ -1,4 +1,5 @@
 import { Module } from "@nestjs/common";
+import { NestAiModule } from "@nestjs-ai/platform";
 import { AnthropicChatModelModule } from "@nestjs-ai/model-anthropic";
 // import { OpenAiChatModelModule } from "@nestjs-ai/model-openai";
 import { ChainWorkflowService } from "./chain-workflow.service";
@@ -17,6 +18,7 @@ function requireAnthropicApiKey(): string {
 
 @Module({
   imports: [
+    NestAiModule.forRoot(),
     // OpenAiChatModelModule.forFeatureAsync({
     //   useFactory: async () => ({
     //     apiKey: process.env.OPENAI_API_KEY,

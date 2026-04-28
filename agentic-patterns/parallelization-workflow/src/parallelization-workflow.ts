@@ -1,7 +1,7 @@
-import { Inject, Injectable } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 import { ChatClient } from "@nestjs-ai/client-chat";
-import { CHAT_MODEL_TOKEN } from "@nestjs-ai/commons";
 import type { ChatModel } from "@nestjs-ai/model";
+import { InjectChatModel } from "@nestjs-ai/platform";
 
 /**
  * Implements the Parallelization Workflow pattern for efficient concurrent
@@ -56,7 +56,7 @@ export class ParallelizationWorkflow {
    * @param chatModel the NestJS AI chat model used to make LLM calls
    */
   constructor(
-    @Inject(CHAT_MODEL_TOKEN)
+    @InjectChatModel()
     chatModel: ChatModel,
   ) {
     this.chatClient = ChatClient.create(chatModel);
