@@ -3,7 +3,6 @@ import { ChatClient } from "@nestjs-ai/client-chat";
 import type { ChatModel } from "@nestjs-ai/model";
 import { InjectChatModel } from "@nestjs-ai/platform";
 import { z } from "zod";
-import type { RoutingResponse } from "./routing-response";
 
 const ROUTING_RESPONSE_SCHEMA = z.object({
   reasoning: z.string(),
@@ -156,11 +155,10 @@ Input: ${input}`;
       throw new Error("Failed to determine route");
     }
 
-    const typedResponse = routingResponse as RoutingResponse;
     console.log(
-      `Routing Analysis:${typedResponse.reasoning}\nSelected route: ${typedResponse.selection}`,
+      `Routing Analysis:${routingResponse.reasoning}\nSelected route: ${routingResponse.selection}`,
     );
 
-    return typedResponse.selection;
+    return routingResponse.selection;
   }
 }

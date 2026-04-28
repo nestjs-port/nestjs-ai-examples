@@ -1,7 +1,4 @@
-import { Injectable } from "@nestjs/common";
 import { ChatClient } from "@nestjs-ai/client-chat";
-import type { ChatModel } from "@nestjs-ai/model";
-import { InjectChatModel } from "@nestjs-ai/platform";
 import { z } from "zod";
 
 /**
@@ -96,11 +93,10 @@ const GENERATION_SCHEMA = z.object({
 });
 
 const EVALUATION_SCHEMA = z.object({
-  evaluation: z.nativeEnum(Evaluation),
+  evaluation: z.enum(Evaluation),
   feedback: z.string(),
 });
 
-@Injectable()
 export class EvaluatorOptimizer {
   static readonly DEFAULT_GENERATOR_PROMPT = `Your goal is to complete the task based on the input. If there are feedback
 from your previous generations, you should reflect on them to improve your solution.
@@ -133,25 +129,11 @@ The evaluation field must be one of: "PASS", "NEEDS_IMPROVEMENT", "FAIL"
 Use "PASS" only if all criteria are met with no improvements needed.`;
 
   private readonly chatClient: ChatClient;
-  private readonly generatorPrompt: string;
-  private readonly evaluatorPrompt: string;
+  private readonly generatorPrompt = EvaluatorOptimizer.DEFAULT_GENERATOR_PROMPT;
+  private readonly evaluatorPrompt = EvaluatorOptimizer.DEFAULT_EVALUATOR_PROMPT;
 
-  constructor(
-    @InjectChatModel()
-    chatModel: ChatModel,
-    generatorPrompt = EvaluatorOptimizer.DEFAULT_GENERATOR_PROMPT,
-    evaluatorPrompt = EvaluatorOptimizer.DEFAULT_EVALUATOR_PROMPT,
-  ) {
-    if (generatorPrompt.trim() === "") {
-      throw new Error("Generator prompt must not be empty");
-    }
-    if (evaluatorPrompt.trim() === "") {
-      throw new Error("Evaluator prompt must not be empty");
-    }
-
-    this.chatClient = ChatClient.create(chatModel);
-    this.generatorPrompt = generatorPrompt;
-    this.evaluatorPrompt = evaluatorPrompt;
+  constructor(chatClient: ChatClient) {
+    this.chatClient = chatClient;
   }
 
   /**
@@ -256,15 +238,10 @@ Use "PASS" only if all criteria are met with no improvements needed.`;
       throw new Error("Failed to evaluate solution");
     }
 
-    const typedResponse: EvaluationResponse = {
-      evaluation: evaluationResponse.evaluation as Evaluation,
-      feedback: evaluationResponse.feedback,
-    };
-
     console.log(
-      `\n=== EVALUATOR OUTPUT ===\nEVALUATION: ${typedResponse.evaluation}\n\nFEEDBACK: ${typedResponse.feedback}\n`,
+      `\n=== EVALUATOR OUTPUT ===\nEVALUATION: ${evaluationResponse.evaluation}\n\nFEEDBACK: ${evaluationResponse.feedback}\n`,
     );
 
-    return typedResponse;
+    return evaluationResponse;
   }
 }

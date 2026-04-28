@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
-import { ChainWorkflowService } from "./chain-workflow";
+import { ChainWorkflow } from "./chain-workflow";
 
 const report = `Q3 Performance Summary:
 Our customer satisfaction score rose to 92 points this quarter.
@@ -15,7 +15,7 @@ Operating margin improved to 34%.`;
 
 async function bootstrap() {
   const app = await NestFactory.createApplicationContext(AppModule);
-  const chainWorkflowService = app.get(ChainWorkflowService);
+  const chainWorkflowService = app.get(ChainWorkflow);
 
   const result = await chainWorkflowService.run(report);
 

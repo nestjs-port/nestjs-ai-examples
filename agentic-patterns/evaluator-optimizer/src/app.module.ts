@@ -1,8 +1,8 @@
 import { Module } from "@nestjs/common";
+import { ChatClientModule } from "@nestjs-ai/client-chat";
 import { NestAiModule } from "@nestjs-ai/platform";
 import { OpenAiChatModelModule } from "@nestjs-ai/model-openai";
 // import { AnthropicChatModelModule } from "@nestjs-ai/model-anthropic";
-import { EvaluatorOptimizer } from "./evaluator-optimizer";
 
 function requireOpenAiApiKey(): string {
   const apiKey = process.env.OPENAI_API_KEY;
@@ -17,15 +17,19 @@ function requireOpenAiApiKey(): string {
 @Module({
   imports: [
     NestAiModule.forRoot(),
-    OpenAiChatModelModule.forFeatureAsync({
-      useFactory: async () => ({
-        apiKey: requireOpenAiApiKey(),
-        options: {
-          model: process.env.OPENAI_MODEL ?? "gpt-4o",
-          temperature: 0,
-          maxTokens: 1200,
-        },
-      }),
+    ChatClientModule.forFeature({
+      imports: [
+        OpenAiChatModelModule.forFeatureAsync({
+          useFactory: async () => ({
+            apiKey: requireOpenAiApiKey(),
+            options: {
+              model: process.env.OPENAI_MODEL ?? "gpt-4o",
+              temperature: 0,
+              maxTokens: 1200,
+            },
+          }),
+        }),
+      ]
     }),
     // AnthropicChatModelModule.forFeatureAsync({
     //   useFactory: async () => ({
@@ -38,7 +42,5 @@ function requireOpenAiApiKey(): string {
     //   }),
     // }),
   ],
-  providers: [EvaluatorOptimizer],
-  exports: [EvaluatorOptimizer],
 })
 export class AppModule {}

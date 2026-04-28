@@ -74,7 +74,7 @@ The chain performs these steps:
 
 The workflow is implemented in two main classes:
 
-1. `chain-workflow.service.ts`: contains the prompt chaining logic and system prompts
+1. `chain-workflow.ts`: contains the prompt chaining logic and system prompts
 2. `main.ts`: provides the NestJS bootstrap and sample input for the CLI run
 
 Each step in the chain acts as a gate that validates and transforms the output before proceeding to the next step.

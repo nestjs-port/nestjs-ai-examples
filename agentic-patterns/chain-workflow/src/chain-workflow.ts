@@ -38,7 +38,7 @@ export interface ChainWorkflowResult {
  * @see ChatClient
  */
 @Injectable()
-export class ChainWorkflowService {
+export class ChainWorkflow {
   private static readonly DEFAULT_SYSTEM_PROMPTS = [
     `Extract only the numerical values and their associated metrics from the text.
 					Format each as'value: metric' on a new line.
@@ -93,7 +93,7 @@ export class ChainWorkflowService {
     const steps: ChainWorkflowStepResult[] = [];
     let response = input.trim();
 
-    for (const [index, systemPrompt] of ChainWorkflowService.DEFAULT_SYSTEM_PROMPTS.entries()) {
+    for (const [index, systemPrompt] of ChainWorkflow.DEFAULT_SYSTEM_PROMPTS.entries()) {
       // 1. Compose the input using the response from the previous step.
       const output = await this.chatClient
         .prompt()

@@ -1,11 +1,15 @@
 import "reflect-metadata";
+import { ChatClient } from "@nestjs-ai/client-chat";
+import { CHAT_CLIENT_BUILDER_TOKEN } from "@nestjs-ai/commons";
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
 import { EvaluatorOptimizer } from "./evaluator-optimizer";
 
 async function bootstrap() {
   const app = await NestFactory.createApplicationContext(AppModule);
-  const agent = app.get(EvaluatorOptimizer);
+  const builder = await app.resolve<ChatClient.Builder>(CHAT_CLIENT_BUILDER_TOKEN);
+  const chatClient = builder.build();
+  const agent = new EvaluatorOptimizer(chatClient);
 
   const refinedResponse = await agent.loop(`
 <user input>
