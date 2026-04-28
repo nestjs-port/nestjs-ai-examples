@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { ChatClient } from "@nestjs-ai/client-chat";
 import type { ChatModel } from "@nestjs-ai/model";
 import { InjectChatModel } from "@nestjs-ai/platform";
+import { z } from "zod";
 
 /**
  * Pattern: <b>Orchestrator-workers</b>
@@ -81,26 +82,15 @@ export interface FinalResponse {
   workerResponses: string[];
 }
 
-const ORCHESTRATOR_RESPONSE_SCHEMA = {
-  type: "object",
-  properties: {
-    analysis: { type: "string" },
-    tasks: {
-      type: "array",
-      items: {
-        type: "object",
-        properties: {
-          type: { type: "string" },
-          description: { type: "string" },
-        },
-        required: ["type", "description"],
-        additionalProperties: false,
-      },
-    },
-  },
-  required: ["analysis", "tasks"],
-  additionalProperties: false,
-} as const;
+const ORCHESTRATOR_RESPONSE_SCHEMA = z.object({
+  analysis: z.string(),
+  tasks: z.array(
+    z.object({
+      type: z.string(),
+      description: z.string(),
+    }),
+  ),
+});
 
 @Injectable()
 export class OrchestratorWorkers {

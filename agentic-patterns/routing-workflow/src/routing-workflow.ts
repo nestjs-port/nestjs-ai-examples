@@ -2,17 +2,13 @@ import { Injectable } from "@nestjs/common";
 import { ChatClient } from "@nestjs-ai/client-chat";
 import type { ChatModel } from "@nestjs-ai/model";
 import { InjectChatModel } from "@nestjs-ai/platform";
+import { z } from "zod";
 import type { RoutingResponse } from "./routing-response";
 
-const ROUTING_RESPONSE_SCHEMA = {
-  type: "object",
-  properties: {
-    reasoning: { type: "string" },
-    selection: { type: "string" },
-  },
-  required: ["reasoning", "selection"],
-  additionalProperties: false,
-} as const;
+const ROUTING_RESPONSE_SCHEMA = z.object({
+  reasoning: z.string(),
+  selection: z.string(),
+});
 
 /**
  * Implements the Routing workflow pattern that classifies input and directs it
@@ -154,7 +150,7 @@ Input: ${input}`;
     const routingResponse = await this.chatClient
       .prompt(selectorPrompt)
       .call()
-      .entity(ROUTING_RESPONSE_SCHEMA as typeof ROUTING_RESPONSE_SCHEMA);
+      .entity(ROUTING_RESPONSE_SCHEMA);
 
     if (routingResponse == null) {
       throw new Error("Failed to determine route");

@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { ChatClient } from "@nestjs-ai/client-chat";
 import type { ChatModel } from "@nestjs-ai/model";
 import { InjectChatModel } from "@nestjs-ai/platform";
+import { z } from "zod";
 
 /**
  * Workflow: <b>Evaluator-optimizer</b>
@@ -89,28 +90,15 @@ export interface RefinedResponse {
   chainOfThought: Generation[];
 }
 
-const GENERATION_SCHEMA = {
-  type: "object",
-  properties: {
-    thoughts: { type: "string" },
-    response: { type: "string" },
-  },
-  required: ["thoughts", "response"],
-  additionalProperties: false,
-} as const;
+const GENERATION_SCHEMA = z.object({
+  thoughts: z.string(),
+  response: z.string(),
+});
 
-const EVALUATION_SCHEMA = {
-  type: "object",
-  properties: {
-    evaluation: {
-      type: "string",
-      enum: ["PASS", "NEEDS_IMPROVEMENT", "FAIL"],
-    },
-    feedback: { type: "string" },
-  },
-  required: ["evaluation", "feedback"],
-  additionalProperties: false,
-} as const;
+const EVALUATION_SCHEMA = z.object({
+  evaluation: z.nativeEnum(Evaluation),
+  feedback: z.string(),
+});
 
 @Injectable()
 export class EvaluatorOptimizer {

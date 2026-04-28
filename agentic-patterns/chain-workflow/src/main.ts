@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
-import { ChainWorkflowService } from "./chain-workflow.service";
+import { ChainWorkflowService } from "./chain-workflow";
 
 const report = `Q3 Performance Summary:
 Our customer satisfaction score rose to 92 points this quarter.
