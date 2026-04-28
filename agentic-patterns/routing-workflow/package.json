@@ -1,0 +1,36 @@
+{
+  "name": "routing-workflow",
+  "version": "0.0.1",
+  "description": "NestJS AI routing workflow sample",
+  "author": "",
+  "private": true,
+  "license": "Apache-2.0",
+  "scripts": {
+    "build": "nest build",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:debug": "nest start --debug --watch",
+    "start:prod": "node dist/main"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.90.0",
+    "@nestjs-ai/client-chat": "^0.1.1",
+    "@nestjs-ai/commons": "^0.1.1",
+    "@nestjs-ai/model": "^0.1.1",
+    "@nestjs-ai/model-anthropic": "^0.1.1",
+    "@nestjs-ai/model-openai": "^0.1.1",
+    "@nestjs/common": "^11.1.19",
+    "@nestjs/core": "^11.1.19",
+    "@nestjs/platform-express": "^11.1.19",
+    "openai": "^6.34.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^11.0.21",
+    "@types/node": "^25.6.0",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^6.0.3"
+  }
+}
