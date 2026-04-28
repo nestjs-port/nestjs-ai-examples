@@ -29,7 +29,7 @@ function requireOpenAiApiKey(): string {
             },
           }),
         }),
-      ]
+      ],
     }),
     // AnthropicChatModelModule.forFeatureAsync({
     //   useFactory: async () => ({

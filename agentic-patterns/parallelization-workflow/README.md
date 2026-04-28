@@ -26,6 +26,7 @@ The Parallelization Workflow pattern manifests in two key variations:
 ## Setup
 
 1. Install dependencies:
+
    ```bash
    npm install
    ```
@@ -44,12 +45,7 @@ Here's a basic example of using the Parallelization Workflow:
 ```ts
 const parallelResponse = await new ParallelizationWorkflow(chatClient).parallel(
   "Analyze how market changes will impact this stakeholder group.",
-  [
-    "Customers: ...",
-    "Employees: ...",
-    "Investors: ...",
-    "Suppliers: ...",
-  ],
+  ["Customers: ...", "Employees: ...", "Investors: ...", "Suppliers: ..."],
   4,
 );
 ```

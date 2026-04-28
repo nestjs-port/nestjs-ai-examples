@@ -48,9 +48,7 @@ This pattern is particularly effective when:
 The implementation uses NestJS AI's ChatClient for LLM interactions and consists of:
 
 ```ts
-const refinedResponse = await agent.loop(
-  "Create a Java class implementing a thread-safe counter",
-);
+const refinedResponse = await agent.loop("Create a Java class implementing a thread-safe counter");
 ```
 
 Run the sample as a CLI-style Nest app with `npm run start`; it prints the generator, evaluator, and final outputs to stdout.
@@ -59,9 +57,7 @@ Run the sample as a CLI-style Nest app with `npm run start`; it prints the gener
 
 ```ts
 const agent = app.get(EvaluatorOptimizer);
-const response = await agent.loop(
-  "Create a Java class implementing a thread-safe counter",
-);
+const response = await agent.loop("Create a Java class implementing a thread-safe counter");
 
 console.log("Final Solution:", response.solution);
 console.log("Evolution:", response.chainOfThought);

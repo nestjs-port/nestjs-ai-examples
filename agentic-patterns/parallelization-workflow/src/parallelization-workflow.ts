@@ -76,11 +76,7 @@ export class ParallelizationWorkflow {
    * @return List of processed results in the same order as the inputs.
    * @throws Error if prompt is null, inputs is empty, or nWorkers <= 0
    */
-  async parallel(
-    prompt: string,
-    inputs: readonly string[],
-    nWorkers: number,
-  ): Promise<string[]> {
+  async parallel(prompt: string, inputs: readonly string[], nWorkers: number): Promise<string[]> {
     if (!prompt) {
       throw new Error("Prompt cannot be null");
     }

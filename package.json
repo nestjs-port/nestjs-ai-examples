@@ -1,0 +1,11 @@
+{
+  "name": "nestjs-ai-examples-root",
+  "private": true,
+  "scripts": {
+    "format": "oxfmt",
+    "format:check": "oxfmt --check"
+  },
+  "devDependencies": {
+    "oxfmt": "^0.47.0"
+  }
+}

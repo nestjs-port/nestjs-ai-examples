@@ -1,10 +1,10 @@
 {
   "name": "observation",
   "version": "0.0.1",
-  "description": "Temporary NestJS app for observation trace propagation testing",
-  "author": "",
   "private": true,
+  "description": "Temporary NestJS app for observation trace propagation testing",
   "license": "Apache-2.0",
+  "author": "",
   "scripts": {
     "build": "nest build",
     "docker:up": "docker compose -f docker-compose.yml up -d",

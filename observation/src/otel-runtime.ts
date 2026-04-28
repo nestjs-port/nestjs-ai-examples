@@ -15,16 +15,12 @@ export function createProductionOtelRuntime(): NodeSDK {
     contextManager: new AsyncLocalStorageContextManager(),
     spanProcessor: new BatchSpanProcessor(
       new OTLPTraceExporter({
-        url:
-          process.env.OTEL_EXPORTER_OTLP_TRACES_ENDPOINT ??
-          "http://127.0.0.1:4318/v1/traces",
+        url: process.env.OTEL_EXPORTER_OTLP_TRACES_ENDPOINT ?? "http://127.0.0.1:4318/v1/traces",
       }),
     ),
     metricReader: new PeriodicExportingMetricReader({
       exporter: new OTLPMetricExporter({
-        url:
-          process.env.OTEL_EXPORTER_OTLP_METRICS_ENDPOINT ??
-          "http://127.0.0.1:14318/v1/metrics",
+        url: process.env.OTEL_EXPORTER_OTLP_METRICS_ENDPOINT ?? "http://127.0.0.1:14318/v1/metrics",
       }),
       exportIntervalMillis: 5_000,
     }),
@@ -32,9 +28,7 @@ export function createProductionOtelRuntime(): NodeSDK {
   });
 }
 
-export async function shutdownProductionOtelRuntime(
-  runtime: NodeSDK | null,
-): Promise<void> {
+export async function shutdownProductionOtelRuntime(runtime: NodeSDK | null): Promise<void> {
   if (!runtime) {
     return;
   }

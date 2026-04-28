@@ -1,10 +1,7 @@
 import "reflect-metadata";
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
-import {
-  createProductionOtelRuntime,
-  shutdownProductionOtelRuntime,
-} from "./otel-runtime";
+import { createProductionOtelRuntime, shutdownProductionOtelRuntime } from "./otel-runtime";
 
 async function bootstrap() {
   const runtime = createProductionOtelRuntime();
