@@ -1,6 +1,6 @@
 {
   "name": "observation",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Temporary NestJS app for observation trace propagation testing",
   "author": "",
   "private": true,
