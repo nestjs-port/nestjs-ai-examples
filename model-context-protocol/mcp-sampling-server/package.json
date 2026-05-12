@@ -1,0 +1,38 @@
+{
+  "name": "mcp-sampling-server",
+  "version": "0.0.1",
+  "private": true,
+  "description": "NestJS AI MCP sampling server sample",
+  "license": "Apache-2.0",
+  "author": "",
+  "type": "module",
+  "scripts": {
+    "build": "nest build",
+    "start": "tsx src/main.ts",
+    "start:dev": "tsx watch src/main.ts",
+    "start:debug": "tsx watch src/main.ts",
+    "start:prod": "node dist/main.js"
+  },
+  "dependencies": {
+    "@cfworker/json-schema": "^4.1.1",
+    "@modelcontextprotocol/server": "^2.0.0-alpha.2",
+    "@nestjs-ai/commons": "^0.1.1",
+    "@nestjs-ai/mcp-annotations": "^0.1.1",
+    "@nestjs-ai/model": "^0.1.1",
+    "@nestjs-port/core": "^0.1.1",
+    "@nestjs/common": "^11.1.19",
+    "@nestjs/core": "^11.1.19",
+    "@nestjs/platform-express": "^11.1.19",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^11.0.21",
+    "@types/node": "^25.6.0",
+    "tsx": "^4.19.4",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^6.0.3"
+  }
+}
