@@ -4,7 +4,7 @@ import { AppModule } from "./app.module.js";
 
 async function bootstrap() {
   const app = await NestFactory.createApplicationContext(AppModule, {
-    logger: ["error", "warn", "log"],
+    logger: false,
   });
 
   app.enableShutdownHooks();

@@ -1,9 +1,13 @@
 import { Module } from "@nestjs/common";
+import { NestAiModule } from "@nestjs-ai/platform";
 import { McpServerModule } from "@nestjs-ai/mcp-server";
 import { WeatherService } from "./weather.service.js";
+import { ToolCallingModule } from "@nestjs-ai/model";
 
 @Module({
   imports: [
+    NestAiModule.forRoot(),
+    ToolCallingModule,
     McpServerModule.forRoot({
       transport: "stdio",
       serverInfo: {
