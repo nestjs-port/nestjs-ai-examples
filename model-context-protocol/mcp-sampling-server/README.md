@@ -1,55 +1,139 @@
-# MCP Sampling Server
+# NestJS AI MCP Sampling Server
 
-This sample ports the Spring AI `model-context-protocol/sampling/mcp-sampling-server` example to NestJS AI.
-It keeps the server-side behavior: a weather tool fetches Open-Meteo data and, when the connected MCP client supports sampling, delegates poem generation back to that client.
+This sample project demonstrates how to create an MCP server using NestJS AI. It implements a weather service that exposes a tool for retrieving weather information from the Open-Meteo API and showcases MCP Sampling capabilities.
 
-## What It Shows
+For more information, see the [Model Context Protocol specification](https://modelcontextprotocol.github.io/specification/).
 
-- `@McpTool`-based tool registration through `@nestjs-ai/mcp-annotations`
-- MCP server bootstrap using the official `@modelcontextprotocol/server` SDK
-- Server-side sampling delegation with `McpServerExchange.createMessage()`
-- Model-hint routing for OpenAI and Anthropic sampling requests
+## Overview
 
-## Prerequisites
+The sample showcases:
 
-- Node.js 22 or newer
-- An MCP client that supports sampling
-- Network access to `https://api.open-meteo.com`
+- Integration with `@nestjs-ai/mcp-server`
+- STDIO transport for MCP clients
+- Automatic tool registration using NestJS AI's `@Tool` annotation
+- MCP Sampling implementation that demonstrates LLM provider routing
+- Weather tool that retrieves temperature data and generates creative responses using multiple LLMs
 
-## Install
+## MCP Sampling Implementation
 
-Run this from `model-context-protocol/mcp-sampling-server`:
+This project demonstrates MCP Sampling, which allows an MCP server to delegate certain requests to LLM providers. The implementation includes:
 
-```bash
-npm install
+1. Server-side sampling: the `WeatherService` class implements a `callMcpSampling` method that:
+   - Extracts the `McpServerExchange` from the tool context
+   - Creates two separate message requests with different model preferences:
+     - One targeting OpenAI models with the `openai` hint
+     - One targeting Anthropic models with the `anthropic` hint
+   - Sends both requests to generate creative poems about the weather data
+   - Combines the responses into a single result
+
+2. Client-side sampling: the connected MCP client is responsible for handling the sampling requests and routing them to the appropriate chat model.
+
+This approach demonstrates how MCP can be used to leverage multiple LLM providers within a single application, allowing for creative content generation and model comparison.
+
+## Dependencies
+
+The project requires the NestJS AI MCP server package:
+
+```json
+"@nestjs-ai/mcp-server": "^0.1.2"
 ```
 
-## Run
+This package provides:
+
+- MCP server integration for NestJS
+- STDIO transport
+- Tool registration support
+
+## Building the Project
+
+Build the project using the Nest CLI:
+
+```bash
+npm run build
+```
+
+## Running the Server
+
+The server uses STDIO transport:
 
 ```bash
 npm run start
 ```
 
-The server runs over STDIO and waits for an MCP client to connect.
+The process waits for an MCP client to connect over STDIO.
 
-## Tool
+## Configuration
 
-The server exposes one tool:
+Configure the server in `src/app.module.ts`:
 
-- `getTemperature(latitude, longitude)` - fetches the current temperature for a location and, when sampling is available, combines OpenAI and Anthropic poem responses with the weather payload.
+```ts
+McpServerModule.forRoot({
+  transport: "stdio",
+  serverInfo: {
+    name: "mcp-sampling-server",
+    version: "0.0.1",
+  },
+});
+```
 
-## Sampling Flow
+## Available Tools
 
-1. The tool fetches the current weather from Open-Meteo.
-2. The server checks whether the connected client advertises MCP sampling support.
-3. If sampling is available, the server sends two `sampling/createMessage` requests:
-   - one with the `openai` model hint
-   - one with the `anthropic` model hint
-4. The client routes each request to the matching chat model and returns a poem.
-5. The server combines both poems with the weather response and returns the final text.
+### Weather Temperature Tool
 
-## Implementation Notes
+- Name: `getTemperature`
+- Description: Get the temperature (in celsius) for a specific location
+- Parameters:
+  - `latitude`: number - The location latitude
+  - `longitude`: number - The location longitude
 
-- The tool implementation lives in `src/weather.service.ts`.
-- The Nest bootstrap lives in `src/mcp-server.bootstrap.ts`.
-- The server registers tools by scanning `@McpTool` metadata and wiring them into the MCP SDK server instance.
+This tool retrieves the current temperature from the Open-Meteo API and uses MCP Sampling to generate creative poems about the weather from both OpenAI and Anthropic models.
+
+## Server Implementation
+
+The server uses NestJS AI tool annotations for automatic tool registration:
+
+```ts
+@Injectable()
+export class WeatherService {
+  @Tool({
+    description: "Get the temperature (in celsius) for a specific location",
+    parameters: WEATHER_TOOL_INPUT_SCHEMA,
+    returns: z.string(),
+  })
+  async getTemperature(input: WeatherToolArguments, toolContext?: ToolContext): Promise<string> {
+    const { latitude, longitude } = input;
+    const weatherResponse = await this.fetchWeather(latitude, longitude);
+    return this.callMcpSampling(toolContext, weatherResponse);
+  }
+
+  public async callMcpSampling(
+    toolContext: ToolContext | undefined,
+    weatherResponse: WeatherResponse,
+  ): Promise<string> {
+    // Uses McpToolUtils.getMcpExchange() to access the MCP exchange
+    // Sends sampling requests with model preferences for OpenAI and Anthropic
+    // Returns combined poems from both models along with weather data
+  }
+}
+```
+
+The application bootstrap lives in `src/main.ts`, and the MCP server module is configured in `src/app.module.ts`.
+
+## MCP Clients
+
+You can connect to the weather server using any MCP client that supports STDIO transport and sampling.
+
+### Sampling Client
+
+The client must handle MCP Sampling requests and route them to the appropriate LLM based on model hints.
+
+To run a compatible client:
+
+1. Start the MCP server
+2. Provide the required model credentials to the client
+3. Connect the client to the server over STDIO
+
+## Additional Resources
+
+- [NestJS AI Documentation](https://docs.nestjs.ai/)
+- [Model Context Protocol Specification](https://modelcontextprotocol.github.io/specification/)

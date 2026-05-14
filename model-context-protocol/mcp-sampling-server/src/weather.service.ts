@@ -1,14 +1,12 @@
 import { Injectable, Logger } from "@nestjs/common";
-import {
-  type McpServerExchange,
-  McpTool,
-  type McpToolMethodArguments,
-} from "@nestjs-ai/mcp-annotations";
+import assert from "node:assert/strict";
+import { type ToolContext, Tool } from "@nestjs-ai/model";
 import {
   type CreateMessageRequest,
   type CreateMessageResult,
   type LoggingMessageNotification,
 } from "@modelcontextprotocol/server";
+import { McpToolUtils, type McpServerExchange } from "@nestjs-ai/mcp-common";
 import { z } from "zod";
 
 const WEATHER_TOOL_INPUT_SCHEMA = z.object({
@@ -30,15 +28,17 @@ interface WeatherResponse {
 export class WeatherService {
   private readonly logger = new Logger(WeatherService.name);
 
-  @McpTool({
+  @Tool({
     description: "Get the temperature (in celsius) for a specific location",
-    inputSchema: WEATHER_TOOL_INPUT_SCHEMA,
+    parameters: WEATHER_TOOL_INPUT_SCHEMA,
+    returns: z.string(),
   })
-  async getTemperature(args: McpToolMethodArguments<WeatherToolArguments>): Promise<string> {
-    const { latitude, longitude } = args.toolArguments;
-
+  async getTemperature(input: WeatherToolArguments, toolContext?: ToolContext): Promise<string> {
+    const { latitude, longitude } = input;
     const weatherResponse = await this.fetchWeather(latitude, longitude);
-    return this.callMcpSampling(args.exchange, weatherResponse);
+    const responseWithPoems = await this.callMcpSampling(toolContext, weatherResponse);
+
+    return responseWithPoems;
   }
 
   private async fetchWeather(latitude: number, longitude: number): Promise<WeatherResponse> {
@@ -53,45 +53,59 @@ export class WeatherService {
     return (await response.json()) as WeatherResponse;
   }
 
-  private async callMcpSampling(
-    exchange: McpServerExchange | undefined,
+  public async callMcpSampling(
+    toolContext: ToolContext | undefined,
     weatherResponse: WeatherResponse,
   ): Promise<string> {
-    if (exchange?.getClientCapabilities()?.sampling == null) {
-      return this.formatWeatherOnly(weatherResponse);
+    const exchange = McpToolUtils.getMcpExchange(toolContext);
+    const openAiWeatherPoem = "";
+    const anthropicWeatherPoem = "";
+
+    if (exchange != null) {
+      const startNotification: LoggingMessageNotification = {
+        method: "notifications/message",
+        params: {
+          level: "info",
+          data: "Start sampling",
+        },
+      } as LoggingMessageNotification;
+
+      await exchange.loggingNotification(startNotification);
     }
 
-    const startNotification: LoggingMessageNotification = {
-      method: "notifications/message",
-      params: {
-        level: "info",
-        data: "Start sampling",
-      },
-    } as LoggingMessageNotification;
-
-    await exchange.loggingNotification(startNotification);
-
-    const prompt = this.buildPoemPrompt(weatherResponse);
-    const openAiWeatherPoem = await this.requestPoem(exchange, "openai", prompt);
-    const anthropicWeatherPoem = await this.requestPoem(exchange, "anthropic", prompt);
-
-    const finishNotification: LoggingMessageNotification = {
-      method: "notifications/message",
-      params: {
-        level: "info",
-        data: "Finish sampling",
-      },
-    } as LoggingMessageNotification;
-
-    await exchange.loggingNotification(finishNotification);
-
-    const responseWithPoems = [
+    let responseWithPoems = [
       `OpenAI poem about the weather: ${openAiWeatherPoem}`,
       "",
       `Anthropic poem about the weather: ${anthropicWeatherPoem}`,
       "",
       JSON.stringify(weatherResponse, null, 2),
     ].join("\n");
+
+    if (exchange != null && exchange.getClientCapabilities()?.sampling != null) {
+      const prompt = this.buildPoemPrompt(weatherResponse);
+      const openAiWeatherPoemResponse = await this.requestPoem(exchange, "openai", prompt);
+      const anthropicWeatherPoemResponse = await this.requestPoem(exchange, "anthropic", prompt);
+
+      responseWithPoems = [
+        `OpenAI poem about the weather: ${openAiWeatherPoemResponse}`,
+        "",
+        `Anthropic poem about the weather: ${anthropicWeatherPoemResponse}`,
+        "",
+        JSON.stringify(weatherResponse, null, 2),
+      ].join("\n");
+    }
+
+    if (exchange != null) {
+      const finishNotification: LoggingMessageNotification = {
+        method: "notifications/message",
+        params: {
+          level: "info",
+          data: "Finish Sampling",
+        },
+      } as LoggingMessageNotification;
+
+      await exchange.loggingNotification(finishNotification);
+    }
 
     this.logger.log(responseWithPoems);
     return responseWithPoems;
@@ -126,26 +140,11 @@ export class WeatherService {
   }
 
   private buildPoemPrompt(weatherResponse: WeatherResponse): string {
-    return [
-      "Please write a poem about this weather forecast (temperature is in Celsius). Use markdown format:",
-      JSON.stringify(weatherResponse, null, 2),
-    ].join("\n");
-  }
-
-  private formatWeatherOnly(weatherResponse: WeatherResponse): string {
-    return JSON.stringify(weatherResponse, null, 2);
+    return `Please write a poem about this weather forecast (temperature is in Celsius). Use markdown format :\n ${JSON.stringify(weatherResponse, null, 2)}`;
   }
 
   private extractTextContent(result: CreateMessageResult): string {
-    const contentBlocks = Array.isArray(result.content) ? result.content : [result.content];
-    const textContent = contentBlocks.find((content) => {
-      return typeof content === "object" && content != null && "type" in content && content.type === "text";
-    });
-
-    if (textContent && typeof textContent === "object" && "text" in textContent) {
-      return textContent.text;
-    }
-
-    return JSON.stringify(result.content, null, 2);
+    assert(result.content.type === "text");
+    return result.content.text;
   }
 }
