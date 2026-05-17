@@ -3,20 +3,12 @@ import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module.js";
 
 async function bootstrap() {
-  const app = await NestFactory.createApplicationContext(AppModule, {
+  const app = await NestFactory.create(AppModule, {
     logger: false,
   });
 
   app.enableShutdownHooks();
-
-  const shutdown = async () => {
-    await app.close();
-  };
-
-  process.once("SIGINT", shutdown);
-  process.once("SIGTERM", shutdown);
-
-  process.stdin.resume();
+  await app.listen(3000);
 }
 
 bootstrap().catch((error: unknown) => {

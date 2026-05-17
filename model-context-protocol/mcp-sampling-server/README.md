@@ -9,7 +9,7 @@ For more information, see the [Model Context Protocol specification](https://mod
 The sample showcases:
 
 - Integration with `@nestjs-ai/mcp-server`
-- STDIO transport for MCP clients
+- Streamable HTTP transport for MCP clients
 - Automatic tool registration using NestJS AI's `@Tool` annotation
 - MCP Sampling implementation that demonstrates LLM provider routing
 - Weather tool that retrieves temperature data and generates creative responses using multiple LLMs
@@ -35,13 +35,13 @@ This approach demonstrates how MCP can be used to leverage multiple LLM provider
 The project requires the NestJS AI MCP server package:
 
 ```json
-"@nestjs-ai/mcp-server": "^0.1.2"
+"@nestjs-ai/mcp-server": "^0.1.3"
 ```
 
 This package provides:
 
 - MCP server integration for NestJS
-- STDIO transport
+- Streamable HTTP transport
 - Tool registration support
 
 ## Building the Project
@@ -54,13 +54,13 @@ npm run build
 
 ## Running the Server
 
-The server uses STDIO transport:
+The server uses Streamable HTTP transport:
 
 ```bash
 npm run start
 ```
 
-The process waits for an MCP client to connect over STDIO.
+The server listens on `http://localhost:3000` and exposes the MCP endpoint at `/mcp`.
 
 ## Configuration
 
@@ -68,7 +68,7 @@ Configure the server in `src/app.module.ts`:
 
 ```ts
 McpServerModule.forRoot({
-  transport: "stdio",
+  transport: "streamable-http",
   serverInfo: {
     name: "mcp-sampling-server",
     version: "0.0.1",
@@ -121,7 +121,7 @@ The application bootstrap lives in `src/main.ts`, and the MCP server module is c
 
 ## MCP Clients
 
-You can connect to the weather server using any MCP client that supports STDIO transport and sampling.
+You can connect to the weather server using any MCP client that supports Streamable HTTP transport and sampling.
 
 ### Sampling Client
 
@@ -131,7 +131,7 @@ To run a compatible client:
 
 1. Start the MCP server
 2. Provide the required model credentials to the client
-3. Connect the client to the server over STDIO
+3. Connect the client to the server over Streamable HTTP at `http://localhost:3000/mcp`
 
 ## Additional Resources
 

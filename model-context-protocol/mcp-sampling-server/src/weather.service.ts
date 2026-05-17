@@ -68,7 +68,7 @@ export class WeatherService {
           level: "info",
           data: "Start sampling",
         },
-      } as LoggingMessageNotification;
+      };
 
       await exchange.loggingNotification(startNotification);
     }
@@ -102,7 +102,7 @@ export class WeatherService {
           level: "info",
           data: "Finish Sampling",
         },
-      } as LoggingMessageNotification;
+      };
 
       await exchange.loggingNotification(finishNotification);
     }
@@ -119,6 +119,7 @@ export class WeatherService {
     const request: CreateMessageRequest = {
       method: "sampling/createMessage",
       params: {
+        maxTokens: 256,
         systemPrompt: "You are a poet!",
         messages: [
           {
@@ -133,7 +134,7 @@ export class WeatherService {
           hints: [{ name: modelHint }],
         },
       },
-    } as CreateMessageRequest;
+    };
 
     const result = await exchange.createMessage(request);
     return this.extractTextContent(result);

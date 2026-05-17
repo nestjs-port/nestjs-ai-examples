@@ -1,15 +1,14 @@
 import { Module } from "@nestjs/common";
 import { NestAiModule } from "@nestjs-ai/platform";
 import { McpServerModule } from "@nestjs-ai/mcp-server";
-import { WeatherService } from "./weather.service.js";
-import { ToolCallingModule } from "@nestjs-ai/model";
+import { WeatherToolsModule } from "./weather-tools.module.js";
 
 @Module({
   imports: [
     NestAiModule.forRoot(),
-    ToolCallingModule,
+    WeatherToolsModule,
     McpServerModule.forRoot({
-      transport: "stdio",
+      transport: "streamable-http",
       serverInfo: {
         name: "mcp-sampling-server",
         version: "0.0.1",
@@ -19,6 +18,5 @@ import { ToolCallingModule } from "@nestjs-ai/model";
       },
     }),
   ],
-  providers: [WeatherService],
 })
 export class AppModule {}
