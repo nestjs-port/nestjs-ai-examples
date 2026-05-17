@@ -1,8 +1,5 @@
 import { Global, Module } from "@nestjs/common";
-import {
-  MethodToolCallbackProvider,
-  TOOL_CALLBACK_PROVIDER_TOKEN,
-} from "@nestjs-ai/model";
+import { MethodToolCallbackProvider, TOOL_CALLBACK_PROVIDER_TOKEN } from "@nestjs-ai/model";
 import { WeatherService } from "./weather.service.js";
 
 @Global()

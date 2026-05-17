@@ -10,7 +10,7 @@ The sample showcases:
 
 - Integration with `@nestjs-ai/mcp-server`
 - Streamable HTTP transport for MCP clients
-- Automatic tool registration using NestJS AI's `@Tool` annotation
+- Tool callback registration through `TOOL_CALLBACK_PROVIDER_TOKEN`
 - MCP Sampling implementation that demonstrates LLM provider routing
 - Weather tool that retrieves temperature data and generates creative responses using multiple LLMs
 
@@ -73,6 +73,9 @@ McpServerModule.forRoot({
     name: "mcp-sampling-server",
     version: "0.0.1",
   },
+  toolCallbacks: {
+    enabled: true,
+  },
 });
 ```
 
@@ -90,9 +93,25 @@ This tool retrieves the current temperature from the Open-Meteo API and uses MCP
 
 ## Server Implementation
 
-The server uses NestJS AI tool annotations for automatic tool registration:
+The server registers tool callbacks through a dedicated provider module:
 
 ```ts
+@Global()
+@Module({
+  providers: [
+    WeatherService,
+    {
+      provide: TOOL_CALLBACK_PROVIDER_TOKEN,
+      useFactory: (weatherService: WeatherService) => [
+        new MethodToolCallbackProvider([weatherService]),
+      ],
+      inject: [WeatherService],
+    },
+  ],
+  exports: [TOOL_CALLBACK_PROVIDER_TOKEN],
+})
+export class WeatherToolsModule {}
+
 @Injectable()
 export class WeatherService {
   @Tool({
@@ -117,7 +136,7 @@ export class WeatherService {
 }
 ```
 
-The application bootstrap lives in `src/main.ts`, and the MCP server module is configured in `src/app.module.ts`.
+The application bootstrap lives in `src/main.ts`, the MCP server module is configured in `src/app.module.ts`, and tool callbacks are exposed from `src/weather-tools.module.ts`.
 
 ## MCP Clients
 
