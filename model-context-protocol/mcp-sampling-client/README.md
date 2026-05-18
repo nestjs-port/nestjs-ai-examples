@@ -56,6 +56,14 @@ export ANTHROPIC_MODEL=claude-haiku-4-5
 
 The client prints the server response after the sampling exchange completes.
 
+## Integration Test
+
+Run the end-to-end script that builds the sibling server and client packages, starts the server, and verifies the sampling flow:
+
+```bash
+npm run integration:e2e
+```
+
 ## Additional Resources
 
 - [NestJS AI Documentation](https://docs.nestjs.ai/)
