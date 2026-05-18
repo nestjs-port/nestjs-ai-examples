@@ -1,0 +1,13 @@
+{
+  "name": "mcp-sampling-integration-tests",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "integration:e2e": "ts-node --esm run-sampling-e2e.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3"
+  }
+}
