@@ -8,7 +8,7 @@
   "type": "module",
   "scripts": {
     "build": "nest build",
-    "integration:e2e": "ts-node --esm integration-tests/run-sampling-e2e.ts",
+    "integration:e2e": "npm --prefix ../integration-tests run integration:e2e",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",

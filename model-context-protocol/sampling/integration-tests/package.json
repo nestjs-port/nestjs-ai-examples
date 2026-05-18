@@ -3,11 +3,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "integration:e2e": "ts-node --esm run-sampling-e2e.ts"
+    "integration:e2e": "tsx run-sampling-e2e.ts"
   },
   "devDependencies": {
     "@types/node": "^25.6.0",
-    "ts-node": "^10.9.2",
+    "tsx": "^4.20.6",
     "typescript": "^6.0.3"
   }
 }

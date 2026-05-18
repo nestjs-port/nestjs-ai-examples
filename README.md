@@ -10,8 +10,8 @@ A collection of NestJS AI examples.
 - `agentic-patterns/routing-workflow` - A workflow that classifies input and routes it to the right path
 - `agentic-patterns/orchestrator-workers` - A workflow where an orchestrator breaks work apart and workers run in parallel
 - `agentic-patterns/evaluator-optimizer` - A workflow that repeats generation and evaluation
-- `model-context-protocol/mcp-sampling-server` - An MCP server that fetches weather data and delegates poem generation through sampling
-- `model-context-protocol/mcp-sampling-client` - An MCP sampling client that routes server sampling requests to OpenAI and Anthropic
+- `model-context-protocol/sampling/mcp-sampling-server` - An MCP server that fetches weather data and delegates poem generation through sampling
+- `model-context-protocol/sampling/mcp-sampling-client` - An MCP sampling client that routes server sampling requests to OpenAI and Anthropic
 
 ## Notes
 
