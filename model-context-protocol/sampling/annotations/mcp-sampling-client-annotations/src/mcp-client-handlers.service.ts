@@ -1,9 +1,5 @@
 import { Injectable, Logger } from "@nestjs/common";
-import {
-  McpLogging,
-  McpProgress,
-  McpSampling,
-} from "@nestjs-ai/mcp-annotations";
+import { McpLogging, McpProgress, McpSampling } from "@nestjs-ai/mcp-annotations";
 import type {
   CreateMessageRequest,
   CreateMessageResult,
@@ -32,7 +28,9 @@ export class McpClientHandlers {
 
   @McpLogging({ clients: ["mcp-sampling-server-annotations"] })
   loggingHandler(notification: LoggingMessageNotification): void {
-    this.logger.log(`MCP LOGGING: [${notification.params.level}] ${String(notification.params.data)}`);
+    this.logger.log(
+      `MCP LOGGING: [${notification.params.level}] ${String(notification.params.data)}`,
+    );
   }
 
   @McpSampling({ clients: ["mcp-sampling-server-annotations"] })

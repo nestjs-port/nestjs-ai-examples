@@ -1,8 +1,8 @@
 {
-  "name": "mcp-sampling-server-annotations",
+  "name": "sqlite-simple",
   "version": "0.0.1",
   "private": true,
-  "description": "NestJS AI MCP sampling server sample using annotations",
+  "description": "NestJS AI MCP SQLite predefined question sample",
   "license": "Apache-2.0",
   "author": "",
   "type": "module",
@@ -15,21 +15,18 @@
   },
   "dependencies": {
     "@cfworker/json-schema": "^4.1.1",
-    "@modelcontextprotocol/node": "^2.0.0-alpha.2",
-    "@modelcontextprotocol/server": "^2.0.0-alpha.2",
-    "@nestjs-ai/commons": "^0.1.1",
-    "@nestjs-ai/mcp-annotations": "^0.1.3",
+    "@modelcontextprotocol/client": "^2.0.0-alpha.2",
+    "@nestjs-ai/client-chat": "^0.1.2",
     "@nestjs-ai/mcp-common": "^0.1.4",
-    "@nestjs-ai/mcp-server": "^0.1.4",
-    "@nestjs-ai/model": "^0.1.2",
+    "@nestjs-ai/model": "^0.1.3",
+    "@nestjs-ai/model-openai": "^0.1.1",
     "@nestjs-ai/platform": "^0.1.1",
-    "@nestjs-port/core": "^0.1.1",
     "@nestjs/common": "^11.1.20",
     "@nestjs/core": "^11.1.20",
     "@nestjs/platform-express": "^11.1.20",
+    "openai": "^6.34.0",
     "reflect-metadata": "^0.2.2",
-    "rxjs": "^7.8.2",
-    "zod": "^4.3.6"
+    "rxjs": "^7.8.2"
   },
   "devDependencies": {
     "@nestjs/cli": "^11.0.21",
@@ -37,6 +34,5 @@
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^6.0.3"
-  },
-  "packageManager": "pnpm@10.13.1"
+  }
 }

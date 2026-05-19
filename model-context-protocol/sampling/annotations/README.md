@@ -32,7 +32,7 @@ The decorator-based NestJS AI flow demonstrates:
 | `@McpSampling`               | `McpClientCustomizer` with a `sampling/createMessage` request handler  |
 | `@McpLogging`                | MCP client logging notifications can be handled inside the customizer  |
 | `@McpProgress`               | MCP client progress notifications can be handled inside the customizer |
-| `ToolCallbackProvider`       | `toolCallbacks.enabled: false` with annotation discovery enabled        |
+| `ToolCallbackProvider`       | `toolCallbacks.enabled: false` with annotation discovery enabled       |
 
 ## Server Side
 

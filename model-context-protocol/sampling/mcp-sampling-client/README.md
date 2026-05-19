@@ -66,5 +66,5 @@ pnpm run integration:e2e
 
 ## Additional Resources
 
-- [NestJS AI Documentation](https://docs.nestjs.ai/)
+- [NestJS AI Documentation](https://nestjs-port.github.io/nestjs-ai)
 - [Model Context Protocol Specification](https://modelcontextprotocol.github.io/specification/)
