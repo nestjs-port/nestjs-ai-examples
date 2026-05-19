@@ -1,4 +1,4 @@
 allowBuilds:
-  '@nestjs/core': true
+  "@nestjs/core": true
   protobufjs: true
   sharp: true
