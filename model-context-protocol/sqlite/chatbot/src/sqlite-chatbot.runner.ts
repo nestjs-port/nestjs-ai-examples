@@ -1,12 +1,8 @@
-import { Injectable } from "@nestjs/common";
+import { Inject, Injectable } from "@nestjs/common";
 import { ChatClient, MessageChatMemoryAdvisor } from "@nestjs-ai/client-chat";
-import {
-  InMemoryChatMemoryRepository,
-  MessageWindowChatMemory,
-  type ChatModel,
-} from "@nestjs-ai/model";
+import { CHAT_CLIENT_BUILDER_TOKEN } from "@nestjs-ai/commons";
+import { InMemoryChatMemoryRepository, MessageWindowChatMemory } from "@nestjs-ai/model";
 import { McpToolCallbackProvider } from "@nestjs-ai/mcp-common";
-import { InjectChatModel } from "@nestjs-ai/platform";
 import { Client as McpClient, StdioClientTransport } from "@modelcontextprotocol/client";
 import path from "node:path";
 import readline from "node:readline/promises";
@@ -14,7 +10,10 @@ import { stdin as input, stdout as output } from "node:process";
 
 @Injectable()
 export class SqliteChatbotRunner {
-  constructor(@InjectChatModel() private readonly chatModel: ChatModel) {}
+  constructor(
+    @Inject(CHAT_CLIENT_BUILDER_TOKEN)
+    private readonly chatClientBuilder: ChatClient.Builder,
+  ) {}
 
   async run(): Promise<void> {
     const mcpClient = await this.createMcpClient();
@@ -29,8 +28,7 @@ export class SqliteChatbotRunner {
         chatMemoryRepository: new InMemoryChatMemoryRepository(),
       });
 
-      const chatClient = ChatClient.create(this.chatModel)
-        .mutate()
+      const chatClient = this.chatClientBuilder
         .defaultToolCallbacks(toolCallbacks)
         .defaultAdvisors(new MessageChatMemoryAdvisor({ chatMemory }))
         .build();

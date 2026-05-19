@@ -14,17 +14,19 @@
  * limitations under the License.
  */
 
-import { Injectable } from "@nestjs/common";
+import { Inject, Injectable } from "@nestjs/common";
 import { ChatClient } from "@nestjs-ai/client-chat";
-import { type ChatModel } from "@nestjs-ai/model";
+import { CHAT_CLIENT_BUILDER_TOKEN } from "@nestjs-ai/commons";
 import { McpToolCallbackProvider } from "@nestjs-ai/mcp-common";
-import { InjectChatModel } from "@nestjs-ai/platform";
 import { Client as McpClient, StdioClientTransport } from "@modelcontextprotocol/client";
 import path from "node:path";
 
 @Injectable()
 export class SqliteSimpleRunner {
-  constructor(@InjectChatModel() private readonly chatModel: ChatModel) {}
+  constructor(
+    @Inject(CHAT_CLIENT_BUILDER_TOKEN)
+    private readonly chatClientBuilder: ChatClient.Builder,
+  ) {}
 
   async run(): Promise<void> {
     const mcpClient = await this.createMcpClient();
@@ -35,10 +37,7 @@ export class SqliteSimpleRunner {
         .build()
         .getToolCallbacks();
 
-      const chatClient = ChatClient.create(this.chatModel)
-        .mutate()
-        .defaultToolCallbacks(toolCallbacks)
-        .build();
+      const chatClient = this.chatClientBuilder.defaultToolCallbacks(toolCallbacks).build();
 
       const questions = [
         "Can you connect to my SQLite database and tell me what products are available, and their prices?",
