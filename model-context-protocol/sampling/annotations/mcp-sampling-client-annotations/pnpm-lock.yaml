@@ -24,8 +24,8 @@ importers:
         specifier: ^0.1.3
         version: 0.1.3(@modelcontextprotocol/client@2.0.0-alpha.2(@cfworker/json-schema@4.1.1))(@modelcontextprotocol/server@2.0.0-alpha.2(@cfworker/json-schema@4.1.1))(@nestjs-ai/mcp-common@0.1.4(@modelcontextprotocol/client@2.0.0-alpha.2(@cfworker/json-schema@4.1.1))(@modelcontextprotocol/server@2.0.0-alpha.2(@cfworker/json-schema@4.1.1))(@nestjs-ai/commons@0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-ai/model@0.1.3(@nestjs-ai/commons@0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2)))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(reflect-metadata@0.2.2)
       '@nestjs-ai/mcp-client':
-        specifier: ^0.1.1
-        version: 0.1.1(6f608afbe86f66db8afba0db14922596)
+        specifier: ^0.1.2
+        version: 0.1.2(6f608afbe86f66db8afba0db14922596)
       '@nestjs-ai/mcp-common':
         specifier: ^0.1.4
         version: 0.1.4(@modelcontextprotocol/client@2.0.0-alpha.2(@cfworker/json-schema@4.1.1))(@modelcontextprotocol/server@2.0.0-alpha.2(@cfworker/json-schema@4.1.1))(@nestjs-ai/commons@0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-ai/model@0.1.3(@nestjs-ai/commons@0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))
@@ -345,8 +345,8 @@ packages:
       '@nestjs-port/core': ^0.1.0
       reflect-metadata: ^0.1.12 || ^0.2.0
 
-  '@nestjs-ai/mcp-client@0.1.1':
-    resolution: {integrity: sha512-nKtptexxdwX/MkllWXyfTRu1zZPYAo+SLaotM1If8i1lg5rIjsnAEFfnZMvgdkHzFz5+LTRpUnPknjNuV2vFwA==}
+  '@nestjs-ai/mcp-client@0.1.2':
+    resolution: {integrity: sha512-dHQ7XL3COEvOn3FhJ9Wd6sR2Cgb5deF45gs+OQQAkUJWFYfoOiPlWpMIyGod4n/WmAFpXoHOk+x+aM8XaCroiA==}
     engines: {node: '>=22.12.0'}
     peerDependencies:
       '@modelcontextprotocol/client': ^2.0.0-alpha.2
@@ -1927,7 +1927,7 @@ snapshots:
       '@standard-schema/spec': 1.1.0
       reflect-metadata: 0.2.2
 
-  '@nestjs-ai/mcp-client@0.1.1(6f608afbe86f66db8afba0db14922596)':
+  '@nestjs-ai/mcp-client@0.1.2(6f608afbe86f66db8afba0db14922596)':
     dependencies:
       '@modelcontextprotocol/client': 2.0.0-alpha.2(@cfworker/json-schema@4.1.1)
       '@nestjs-ai/commons': 0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2)
