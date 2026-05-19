@@ -12,7 +12,7 @@ const SERVER_DIR = resolve(SAMPLE_DIR, "mcp-sampling-server");
 const LOG_DIR = resolve(INTEGRATION_TESTS_DIR, "logs");
 const PORT = 3000;
 const SERVER_URL = `http://127.0.0.1:${PORT}/mcp`;
-const npmCommand = process.platform === "win32" ? "npm.cmd" : "npm";
+const pnpmCommand = process.platform === "win32" ? "pnpm.cmd" : "pnpm";
 
 async function main(): Promise<void> {
   requireApiKeys();
@@ -22,7 +22,7 @@ async function main(): Promise<void> {
   console.log(`Server directory: ${SERVER_DIR}`);
   console.log(`Log directory: ${LOG_DIR}`);
 
-  runCommand(npmCommand, ["run", "build"], SERVER_DIR);
+  runCommand(pnpmCommand, ["run", "build"], SERVER_DIR);
 
   const serverLogPath = resolve(LOG_DIR, `server-${Date.now()}.log`);
   const server = startServer(serverLogPath);
@@ -30,15 +30,15 @@ async function main(): Promise<void> {
   try {
     await waitForServer();
 
-    runCommand(npmCommand, ["run", "build"], CLIENT_DIR);
+    runCommand(pnpmCommand, ["run", "build"], CLIENT_DIR);
 
     const clientLogPath = resolve(LOG_DIR, `client-${Date.now()}.log`);
     const output = await runClient(clientLogPath);
 
     assertContains(output, "OpenAI poem about the weather:");
     assertContains(output, "Anthropic poem about the weather:");
-    assertContains(output, "Handling sampling request for hint \"openai\"");
-    assertContains(output, "Handling sampling request for hint \"anthropic\"");
+    assertContains(output, 'Handling sampling request for hint "openai"');
+    assertContains(output, 'Handling sampling request for hint "anthropic"');
 
     console.log("Integration test completed successfully.");
     console.log(`Server log: ${serverLogPath}`);
@@ -72,7 +72,7 @@ function runCommand(command: string, args: string[], cwd: string): void {
 
 function startServer(logPath: string): ChildProcess {
   const logStream = createWriteStream(logPath, { flags: "a" });
-  const child = spawn(npmCommand, ["run", "start:prod"], {
+  const child = spawn(pnpmCommand, ["run", "start:prod"], {
     cwd: SERVER_DIR,
     env: process.env,
     stdio: ["ignore", "pipe", "pipe"],
@@ -117,7 +117,7 @@ async function waitForServer(): Promise<void> {
 
 async function runClient(logPath: string): Promise<string> {
   const logStream = createWriteStream(logPath, { flags: "a" });
-  const child = spawn(npmCommand, ["run", "start:prod"], {
+  const child = spawn(pnpmCommand, ["run", "start:prod"], {
     cwd: CLIENT_DIR,
     env: process.env,
     stdio: ["ignore", "pipe", "pipe"],

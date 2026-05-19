@@ -8,7 +8,7 @@
   "type": "module",
   "scripts": {
     "build": "nest build",
-    "integration:e2e": "npm --prefix ../integration-tests run integration:e2e",
+    "integration:e2e": "pnpm --dir ../integration-tests run integration:e2e",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",

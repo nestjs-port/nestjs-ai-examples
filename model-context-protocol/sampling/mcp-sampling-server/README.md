@@ -49,7 +49,7 @@ This package provides:
 Build the project using the Nest CLI:
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 ## Running the Server
@@ -57,7 +57,7 @@ npm run build
 The server uses Streamable HTTP transport:
 
 ```bash
-npm run start
+pnpm start
 ```
 
 The server listens on `http://localhost:3000` and exposes the MCP endpoint at `/mcp`.

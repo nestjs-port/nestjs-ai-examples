@@ -27,7 +27,7 @@ The prompt chaining pattern is useful when:
 Run this from `agentic-patterns/chain-workflow`:
 
 ```bash
-npm install
+pnpm i
 ```
 
 ## Run the app
@@ -42,7 +42,7 @@ export ANTHROPIC_MODEL=claude-haiku-4-5
 Then run the sample:
 
 ```bash
-npm run start
+pnpm start
 ```
 
 The workflow runs as a CLI-style Nest application and prints each step to stdout.

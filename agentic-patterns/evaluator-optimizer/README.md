@@ -51,7 +51,7 @@ The implementation uses NestJS AI's ChatClient for LLM interactions and consists
 const refinedResponse = await agent.loop("Create a Java class implementing a thread-safe counter");
 ```
 
-Run the sample as a CLI-style Nest app with `npm run start`; it prints the generator, evaluator, and final outputs to stdout.
+Run the sample as a CLI-style Nest app with `pnpm start`; it prints the generator, evaluator, and final outputs to stdout.
 
 ### Usage Example
 

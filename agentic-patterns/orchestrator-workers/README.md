@@ -51,7 +51,7 @@ const orchestratorResponse = await agent.process(
 );
 ```
 
-Run the sample as a CLI-style Nest app with `npm run start`; it prints the orchestrator analysis and worker outputs to stdout.
+Run the sample as a CLI-style Nest app with `pnpm start`; it prints the orchestrator analysis and worker outputs to stdout.
 
 ### Default Templates
 

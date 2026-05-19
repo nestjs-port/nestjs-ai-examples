@@ -1,7 +1,7 @@
 # Observation Sample
 
 This is a self-contained NestJS sample for local embedding generation and OpenTelemetry observation.
-It is not part of the npm workspace. Run it directly from this folder.
+It is not part of the workspace. Run it directly from this folder.
 
 ## Runtime requirements
 
@@ -20,7 +20,7 @@ Run these commands from `nestjs-ai/samples/observation`.
 Make sure ports `16686`, `4317`, `4318`, and `9090` are free before starting.
 
 ```bash
-npm run docker:up
+pnpm docker:up
 ```
 
 This starts:
@@ -29,20 +29,20 @@ This starts:
 - Prometheus at `http://localhost:9090`
 - OTLP collector on `http://localhost:4317` and `http://localhost:4318`
 
-## Install with npm
+## Install with pnpm
 
-If you want to treat this sample as a standalone app, install dependencies with npm from this directory:
+If you want to treat this sample as a standalone app, install dependencies with pnpm from this directory:
 
 ```bash
-npm install
+pnpm i
 ```
 
-This creates a local `package-lock.json` and `node_modules/` for the sample only.
+This creates a local `pnpm-lock.yaml` and `node_modules/` for the sample only.
 
 ## Run the app
 
 ```bash
-npm run start:dev
+pnpm start:dev
 ```
 
 The first request may take a little longer while the embedding model is downloaded.
@@ -60,5 +60,5 @@ curl 'http://localhost:3000/embedding?text=hello%20world'
 ## Stop the stack
 
 ```bash
-npm run docker:down
+pnpm docker:down
 ```

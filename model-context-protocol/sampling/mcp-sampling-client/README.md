@@ -42,17 +42,17 @@ export ANTHROPIC_MODEL=claude-haiku-4-5
 
 1. Start the server first:
 
-   ```bash
+```bash
    cd ../mcp-sampling-server
-   npm run start
-   ```
+   pnpm start
+```
 
 2. Run the client:
 
-   ```bash
+```bash
    cd ../mcp-sampling-client
-   npm run start
-   ```
+   pnpm start
+```
 
 The client prints the server response after the sampling exchange completes.
 
@@ -61,7 +61,7 @@ The client prints the server response after the sampling exchange completes.
 Run the end-to-end script that builds the sibling server and client packages, starts the server, and verifies the sampling flow:
 
 ```bash
-npm run integration:e2e
+pnpm run integration:e2e
 ```
 
 ## Additional Resources

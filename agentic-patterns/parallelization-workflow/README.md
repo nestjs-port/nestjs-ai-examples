@@ -28,12 +28,12 @@ The Parallelization Workflow pattern manifests in two key variations:
 1. Install dependencies:
 
    ```bash
-   npm install
+   pnpm i
    ```
 
 2. Run the sample:
    ```bash
-   npm run start
+   pnpm start
    ```
 
 The sample runs as a CLI-style Nest application and prints the parallelized responses to stdout.
