@@ -26,6 +26,7 @@ A collection of NestJS AI examples.
 - `model-context-protocol/sqlite/simple` - A predefined-question SQLite sample that runs through the database analysis flow
 - `model-context-protocol/sqlite/chatbot` - An interactive SQLite chatbot that discovers MCP tools from a local SQLite server
 - `model-context-protocol/brave` - A predefined-question Brave Search sample that discovers MCP tools from stdio config
+- `model-context-protocol/brave-docker-agents-gateway` - A predefined-question Brave Search sample that connects through Docker MCP Gateway
 
 ## Notes
 
