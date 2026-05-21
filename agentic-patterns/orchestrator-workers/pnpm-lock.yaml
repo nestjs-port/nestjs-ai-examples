@@ -12,23 +12,23 @@ importers:
         specifier: ^0.90.0
         version: 0.90.0(zod@4.4.3)
       '@nestjs-ai/client-chat':
-        specifier: ^0.1.1
-        version: 0.1.1(@nestjs-ai/commons@0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-ai/model@0.1.3(@nestjs-ai/commons@0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(rxjs@7.8.2)
+        specifier: ^0.1.3
+        version: 0.1.3(@nestjs-ai/commons@0.1.2(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-ai/model@0.1.4(@nestjs-ai/commons@0.1.2(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(rxjs@7.8.2)
       '@nestjs-ai/commons':
-        specifier: ^0.1.1
-        version: 0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2)
-      '@nestjs-ai/model':
         specifier: ^0.1.2
-        version: 0.1.3(@nestjs-ai/commons@0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2)
+        version: 0.1.2(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2)
+      '@nestjs-ai/model':
+        specifier: ^0.1.4
+        version: 0.1.4(@nestjs-ai/commons@0.1.2(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@nestjs-ai/model-anthropic':
-        specifier: ^0.1.1
-        version: 0.1.1(@anthropic-ai/sdk@0.90.0(zod@4.4.3))(@nestjs-ai/commons@0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-ai/model@0.1.3(@nestjs-ai/commons@0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(rxjs@7.8.2)
+        specifier: ^0.1.2
+        version: 0.1.2(@anthropic-ai/sdk@0.90.0(zod@4.4.3))(@nestjs-ai/commons@0.1.2(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-ai/model@0.1.4(@nestjs-ai/commons@0.1.2(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(rxjs@7.8.2)
       '@nestjs-ai/model-openai':
-        specifier: ^0.1.1
-        version: 0.1.1(@nestjs-ai/commons@0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-ai/model@0.1.3(@nestjs-ai/commons@0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(openai@6.38.0(zod@4.4.3))(rxjs@7.8.2)
+        specifier: ^0.1.2
+        version: 0.1.2(@nestjs-ai/commons@0.1.2(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-ai/model@0.1.4(@nestjs-ai/commons@0.1.2(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(openai@6.38.0(zod@4.4.3))(rxjs@7.8.2)
       '@nestjs-ai/platform':
-        specifier: ^0.1.1
-        version: 0.1.1(@nestjs-ai/commons@0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-ai/model@0.1.3(@nestjs-ai/commons@0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.21)
+        specifier: ^0.1.2
+        version: 0.1.2(@nestjs-ai/commons@0.1.2(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.21)
       '@nestjs/common':
         specifier: ^11.1.19
         version: 11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2)
@@ -285,41 +285,41 @@ packages:
     resolution: {integrity: sha512-Z7C/xXCiGWsg0KuKsHTKJxbWhpI3Vs5GwLfOean7MGyVFGqdRgBbAjOCh6u4bbjPc/8MJ2pZmK/0DLdCbivLDA==}
     engines: {node: '>=8'}
 
-  '@nestjs-ai/client-chat@0.1.1':
-    resolution: {integrity: sha512-gQC2wogU6Kg0xEgutoQBtEKiLOxjbvwInNMeNbMpPNTNdBrXXGrv3Q+KHvaxroGPS063cTbhMziGCiqbZlr7uQ==}
+  '@nestjs-ai/client-chat@0.1.3':
+    resolution: {integrity: sha512-vCQwqKd16ZKm0DwxJRvRMDxqfk9Vw3LyqNGDgclN4COssmad2XaYOGTqED4ud7m1vvRw7L6KCbKkkSDjccl/7A==}
     engines: {node: '>=22.12.0'}
     peerDependencies:
-      '@nestjs-ai/commons': ^0.1.1
-      '@nestjs-ai/model': ^0.1.1
+      '@nestjs-ai/commons': ^0.1.2
+      '@nestjs-ai/model': ^0.1.4
       '@nestjs-port/core': ^0.1.0
       '@nestjs/common': ^10.0.0 || ^11.0.0
       rxjs: ^7.8.2
 
-  '@nestjs-ai/commons@0.1.1':
-    resolution: {integrity: sha512-d4fe+bgSfZcT0WLgUP+52kvgxiBTKnhb+hNKmMZyjr7oJiShb7BWXP5wRx9fkW2ZRm23VTaqqh/olmbmb+TjWg==}
+  '@nestjs-ai/commons@0.1.2':
+    resolution: {integrity: sha512-jYOZrvDv55yCRGVRqEIviHPONWJMOxE3U2GPIvASNeQeqhWSw9G5H/p00RFYnUF4Vp02/7wSEUPjZSh7HNAIuA==}
     engines: {node: '>=22.12.0'}
     peerDependencies:
       '@nestjs-port/core': ^0.1.0
       rxjs: ^7.8.2
 
-  '@nestjs-ai/model-anthropic@0.1.1':
-    resolution: {integrity: sha512-bjYdqr1V/TnKRp0qynGD46ERAj0No+uF1UJLp2AvscshiOmbMJ8xDfoZ6952kOIdlvrTxT2mj1EhK4jS1a8MOA==}
+  '@nestjs-ai/model-anthropic@0.1.2':
+    resolution: {integrity: sha512-OkvDZLrZ7y2et5cXkoEEpOqK5Lrz8Eh3mCLrn4ywpTpBn/2w3hznsQ+phdfEPgzUqxXnXCSyAOb9t/R4PhubAQ==}
     engines: {node: '>=22.12.0'}
     peerDependencies:
       '@anthropic-ai/sdk': ^0.90.0
-      '@nestjs-ai/commons': ^0.1.1
-      '@nestjs-ai/model': ^0.1.1
+      '@nestjs-ai/commons': ^0.1.2
+      '@nestjs-ai/model': ^0.1.4
       '@nestjs-port/core': ^0.1.0
       '@nestjs/common': ^10.0.0 || ^11.0.0
       rxjs: ^7.8.2
 
-  '@nestjs-ai/model-openai@0.1.1':
-    resolution: {integrity: sha512-S9Xs4E1jMh7YJf5Fp7mix5b6ZlG/d5I/1LEmhxRQZJW2PQu5vbXnqmHB8GP1i/v7g9rq7TafH8eRfkjBOeW/Gw==}
+  '@nestjs-ai/model-openai@0.1.2':
+    resolution: {integrity: sha512-FVsosxvEe9FFxAmoUDHUck+gcr/08u8XrtCmmZnaa5fZh/Xb0tfWXS42Rz9GolOJmaLaEf8TWxj7SzdUQcMkCw==}
     engines: {node: '>=22.12.0'}
     peerDependencies:
       '@azure/identity': ^4.13.1
-      '@nestjs-ai/commons': ^0.1.1
-      '@nestjs-ai/model': ^0.1.1
+      '@nestjs-ai/commons': ^0.1.2
+      '@nestjs-ai/model': ^0.1.4
       '@nestjs-port/core': ^0.1.0
       '@nestjs/common': ^10.0.0 || ^11.0.0
       openai: ^6.34.0
@@ -328,22 +328,21 @@ packages:
       '@azure/identity':
         optional: true
 
-  '@nestjs-ai/model@0.1.3':
-    resolution: {integrity: sha512-T6szeHSamsp0GR2pMYUAhepaYIa7H0Tf/ACKNJL2zQzFdivJKQ8kdixC9dG5teyYSOOnb8/xNinC0Sw1nU1R3A==}
+  '@nestjs-ai/model@0.1.4':
+    resolution: {integrity: sha512-5G7gy5uG1eODpeEFFZJ2Cwt8MS+lF1ipf75kPyUAQWSdtUZIAxVgdKgyNMECKNAccdFh39lD1JCm86yWd2a+SA==}
     engines: {node: '>=22.12.0'}
     peerDependencies:
-      '@nestjs-ai/commons': ^0.1.1
+      '@nestjs-ai/commons': ^0.1.2
       '@nestjs-port/core': ^0.1.0
       '@nestjs/common': ^10.0.0 || ^11.0.0
       reflect-metadata: ^0.1.12 || ^0.2.0
       rxjs: ^7.8.2
 
-  '@nestjs-ai/platform@0.1.1':
-    resolution: {integrity: sha512-dAmmtyA0v98Xf7zw8N0oW7rAidyn1YPvvM/nlTyUsZbJeTnsUK5rYLB7JRWcE5eksWsrqujK28aARJ13AsC9aQ==}
+  '@nestjs-ai/platform@0.1.2':
+    resolution: {integrity: sha512-kVV7jnV+CXJjW2tURxWv8JZb7r1mK3GEO54+FuUQmQNK+Sd72gdaYJXGeCgpfZtDaDmLUh81itn46eWYUkPHJg==}
     engines: {node: '>=22.12.0'}
     peerDependencies:
-      '@nestjs-ai/commons': ^0.1.1
-      '@nestjs-ai/model': ^0.1.1
+      '@nestjs-ai/commons': ^0.1.2
       '@nestjs-ai/template-st': ^0.1.1
       '@nestjs-port/core': ^0.1.0
       '@nestjs/common': ^10.0.0 || ^11.0.0
@@ -1779,43 +1778,43 @@ snapshots:
 
   '@lukeed/csprng@1.1.0': {}
 
-  '@nestjs-ai/client-chat@0.1.1(@nestjs-ai/commons@0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-ai/model@0.1.3(@nestjs-ai/commons@0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(rxjs@7.8.2)':
+  '@nestjs-ai/client-chat@0.1.3(@nestjs-ai/commons@0.1.2(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-ai/model@0.1.4(@nestjs-ai/commons@0.1.2(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(rxjs@7.8.2)':
     dependencies:
-      '@nestjs-ai/commons': 0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2)
-      '@nestjs-ai/model': 0.1.3(@nestjs-ai/commons@0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs-ai/commons': 0.1.2(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2)
+      '@nestjs-ai/model': 0.1.4(@nestjs-ai/commons@0.1.2(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@nestjs-port/core': 0.1.1(rxjs@7.8.2)
       '@nestjs/common': 11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@standard-schema/spec': 1.1.0
       json-schema-to-ts: 3.1.1
       rxjs: 7.8.2
 
-  '@nestjs-ai/commons@0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2)':
+  '@nestjs-ai/commons@0.1.2(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2)':
     dependencies:
       '@nestjs-port/core': 0.1.1(rxjs@7.8.2)
       rxjs: 7.8.2
       tiktoken: 1.0.22
 
-  '@nestjs-ai/model-anthropic@0.1.1(@anthropic-ai/sdk@0.90.0(zod@4.4.3))(@nestjs-ai/commons@0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-ai/model@0.1.3(@nestjs-ai/commons@0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(rxjs@7.8.2)':
+  '@nestjs-ai/model-anthropic@0.1.2(@anthropic-ai/sdk@0.90.0(zod@4.4.3))(@nestjs-ai/commons@0.1.2(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-ai/model@0.1.4(@nestjs-ai/commons@0.1.2(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(rxjs@7.8.2)':
     dependencies:
       '@anthropic-ai/sdk': 0.90.0(zod@4.4.3)
-      '@nestjs-ai/commons': 0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2)
-      '@nestjs-ai/model': 0.1.3(@nestjs-ai/commons@0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs-ai/commons': 0.1.2(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2)
+      '@nestjs-ai/model': 0.1.4(@nestjs-ai/commons@0.1.2(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@nestjs-port/core': 0.1.1(rxjs@7.8.2)
       '@nestjs/common': 11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2)
       rxjs: 7.8.2
 
-  '@nestjs-ai/model-openai@0.1.1(@nestjs-ai/commons@0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-ai/model@0.1.3(@nestjs-ai/commons@0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(openai@6.38.0(zod@4.4.3))(rxjs@7.8.2)':
+  '@nestjs-ai/model-openai@0.1.2(@nestjs-ai/commons@0.1.2(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-ai/model@0.1.4(@nestjs-ai/commons@0.1.2(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(openai@6.38.0(zod@4.4.3))(rxjs@7.8.2)':
     dependencies:
-      '@nestjs-ai/commons': 0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2)
-      '@nestjs-ai/model': 0.1.3(@nestjs-ai/commons@0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs-ai/commons': 0.1.2(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2)
+      '@nestjs-ai/model': 0.1.4(@nestjs-ai/commons@0.1.2(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@nestjs-port/core': 0.1.1(rxjs@7.8.2)
       '@nestjs/common': 11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2)
       openai: 6.38.0(zod@4.4.3)
       rxjs: 7.8.2
 
-  '@nestjs-ai/model@0.1.3(@nestjs-ai/commons@0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2)':
+  '@nestjs-ai/model@0.1.4(@nestjs-ai/commons@0.1.2(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2)':
     dependencies:
-      '@nestjs-ai/commons': 0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2)
+      '@nestjs-ai/commons': 0.1.2(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2)
       '@nestjs-port/core': 0.1.1(rxjs@7.8.2)
       '@nestjs/common': 11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@standard-schema/spec': 1.1.0
@@ -1824,10 +1823,9 @@ snapshots:
       reflect-metadata: 0.2.2
       rxjs: 7.8.2
 
-  '@nestjs-ai/platform@0.1.1(@nestjs-ai/commons@0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-ai/model@0.1.3(@nestjs-ai/commons@0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.21)':
+  '@nestjs-ai/platform@0.1.2(@nestjs-ai/commons@0.1.2(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.21)':
     dependencies:
-      '@nestjs-ai/commons': 0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2)
-      '@nestjs-ai/model': 0.1.3(@nestjs-ai/commons@0.1.1(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2))(@nestjs-port/core@0.1.1(rxjs@7.8.2))(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs-ai/commons': 0.1.2(@nestjs-port/core@0.1.1(rxjs@7.8.2))(rxjs@7.8.2)
       '@nestjs-port/core': 0.1.1(rxjs@7.8.2)
       '@nestjs/common': 11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@nestjs/core': 11.1.21(@nestjs/common@11.1.21(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.1.21)(reflect-metadata@0.2.2)(rxjs@7.8.2)

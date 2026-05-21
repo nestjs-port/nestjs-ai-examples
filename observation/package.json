@@ -15,10 +15,10 @@
     "start:prod": "node dist/main"
   },
   "dependencies": {
-    "@nestjs-ai/commons": "^0.1.1",
-    "@nestjs-ai/model": "^0.1.2",
-    "@nestjs-ai/model-transformers": "^0.1.1",
-    "@nestjs-ai/platform": "^0.1.1",
+    "@nestjs-ai/commons": "^0.1.2",
+    "@nestjs-ai/model": "^0.1.4",
+    "@nestjs-ai/model-transformers": "^0.1.2",
+    "@nestjs-ai/platform": "^0.1.2",
     "@nestjs-port/core": "^0.1.1",
     "@nestjs-port/observation": "^0.1.0",
     "@nestjs/common": "^11.1.19",
