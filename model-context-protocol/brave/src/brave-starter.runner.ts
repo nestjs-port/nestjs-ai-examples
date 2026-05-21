@@ -16,16 +16,15 @@
 
 import { Inject, Injectable } from "@nestjs/common";
 import { ChatClient } from "@nestjs-ai/client-chat";
-import { CHAT_CLIENT_BUILDER_TOKEN } from "@nestjs-ai/commons";
+import { CHAT_CLIENT_BUILDER_TOKEN, TOOL_CALLBACK_PROVIDER_TOKEN } from "@nestjs-ai/commons";
 import type { ToolCallbackProvider } from "@nestjs-ai/model";
-import { BRAVE_TOOL_CALLBACK_PROVIDER } from "./app.module.js";
 
 @Injectable()
 export class BraveStarterRunner {
   constructor(
     @Inject(CHAT_CLIENT_BUILDER_TOKEN)
     private readonly chatClientBuilder: ChatClient.Builder,
-    @Inject(BRAVE_TOOL_CALLBACK_PROVIDER)
+    @Inject(TOOL_CALLBACK_PROVIDER_TOKEN)
     private readonly toolCallbackProvider: ToolCallbackProvider,
   ) {}
 

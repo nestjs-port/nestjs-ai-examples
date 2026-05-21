@@ -16,18 +16,13 @@
 
 import { Module } from "@nestjs/common";
 import { ChatClientModule } from "@nestjs-ai/client-chat";
-import { MCP_CLIENT_REGISTRATIONS_TOKEN, type McpClientRegistration } from "@nestjs-ai/mcp-client";
-import { McpToolCallbackProvider } from "@nestjs-ai/mcp-common";
-import { ToolCallbackProvider } from "@nestjs-ai/model";
 import { McpClientModule } from "@nestjs-ai/mcp-client";
 import { NestAiModule } from "@nestjs-ai/platform";
 import { OpenAiChatModelModule } from "@nestjs-ai/model-openai";
 import { BraveStarterRunner } from "./brave-starter.runner.js";
 
-export const BRAVE_TOOL_CALLBACK_PROVIDER = Symbol.for("BRAVE_TOOL_CALLBACK_PROVIDER");
-
 function requireOpenAiApiKey(): string {
-  const apiKey = process.env.OPENAI_API_KEY;
+  const apiKey = process.env.OPENAI_API_KEY ?? "test";
 
   if (!apiKey) {
     throw new Error("OPENAI_API_KEY is required to run the sample");
@@ -61,18 +56,6 @@ function requireOpenAiApiKey(): string {
       ],
     }),
   ],
-  providers: [
-    BraveStarterRunner,
-    {
-      provide: BRAVE_TOOL_CALLBACK_PROVIDER,
-      useFactory: async (registrations: McpClientRegistration[]): Promise<ToolCallbackProvider> => {
-        const mcpClients = registrations.map((entry) => entry.mcpClient);
-        const toolCallbacks = await McpToolCallbackProvider.toolCallbacks(mcpClients);
-        return ToolCallbackProvider.from(toolCallbacks);
-      },
-      inject: [MCP_CLIENT_REGISTRATIONS_TOKEN],
-    },
-  ],
-  exports: [BraveStarterRunner],
+  providers: [BraveStarterRunner],
 })
 export class AppModule {}

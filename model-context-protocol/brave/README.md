@@ -37,11 +37,7 @@ Optional model override:
 export OPENAI_MODEL=gpt-4o
 ```
 
-The Brave Search MCP server also expects a Brave API key in the environment:
-
-```bash
-export BRAVE_API_KEY=your-brave-api-key
-```
+This sample passes the Brave key through `mcp-servers-config.json`. Replace `YOUR_BRAVE_API_KEY_HERE` in that file before running the app.
 
 ## Running the Sample
 
