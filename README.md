@@ -25,6 +25,7 @@ A collection of NestJS AI examples.
 - `model-context-protocol/sampling/annotations/mcp-sampling-client-annotations` - A decorator-based MCP sampling client that routes requests by model hint
 - `model-context-protocol/sqlite/simple` - A predefined-question SQLite sample that runs through the database analysis flow
 - `model-context-protocol/sqlite/chatbot` - An interactive SQLite chatbot that discovers MCP tools from a local SQLite server
+- `model-context-protocol/brave` - A predefined-question Brave Search sample that discovers MCP tools from stdio config
 
 ## Notes
 
