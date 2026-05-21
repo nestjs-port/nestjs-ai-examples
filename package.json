@@ -2,6 +2,8 @@
   "name": "nestjs-ai-examples-root",
   "private": true,
   "scripts": {
+    "check:versions": "bash scripts/check-nestjs-ai-dependency-versions.sh",
+    "update:versions": "bash scripts/update-nestjs-ai-dependency-versions.sh",
     "format": "oxfmt",
     "format:check": "oxfmt --check"
   },
