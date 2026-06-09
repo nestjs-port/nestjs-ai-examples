@@ -31,13 +31,10 @@ PROJECT_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 
 cd "${PROJECT_ROOT}"
 
-BACKUP_DIR="${PROJECT_ROOT}/.version-backups/$(date +%Y%m%d_%H%M%S)"
-mkdir -p "${BACKUP_DIR}"
-
 TARGET_JSON="$(mktemp)"
 CHANGED_FILES="$(mktemp)"
 CHANGED_DIRS="$(mktemp)"
-export BACKUP_DIR TARGET_JSON CHANGED_FILES CHANGED_DIRS
+export TARGET_JSON CHANGED_FILES CHANGED_DIRS
 
 node - "$TARGET_JSON" "$@" <<'NODE'
 const fs = require('fs');
@@ -58,7 +55,6 @@ const fs = require('fs');
 const path = require('path');
 
 const root = process.cwd();
-const backupDir = process.env.BACKUP_DIR;
 const changedFiles = process.env.CHANGED_FILES;
 const changedDirs = process.env.CHANGED_DIRS;
 const targets = JSON.parse(fs.readFileSync(process.env.TARGET_JSON, 'utf8'));
@@ -93,9 +89,6 @@ function walk(dir) {
 
       if (changed) {
         const relativePath = path.relative(root, full);
-        const backupPath = path.join(backupDir, relativePath);
-        fs.mkdirSync(path.dirname(backupPath), { recursive: true });
-        fs.copyFileSync(full, backupPath);
         fs.writeFileSync(full, JSON.stringify(pkg, null, 2) + '\n');
         fs.appendFileSync(changedFiles, `${relativePath}\n`);
         fs.appendFileSync(changedDirs, `${path.dirname(relativePath)}\n`);
@@ -136,6 +129,4 @@ rm -f "${CHANGED_FILES}" "${CHANGED_DIRS}"
 
 echo ""
 echo "Summary:"
-echo "  Backup location: $BACKUP_DIR"
-echo ""
 echo "✅ Dependency version update complete!"

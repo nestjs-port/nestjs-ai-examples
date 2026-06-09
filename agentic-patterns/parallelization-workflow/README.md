@@ -80,6 +80,10 @@ The `ParallelizationWorkflow` class provides the core implementation with the fo
 
 OpenAI support is available by uncommenting the OpenAI model dependency and module block.
 
+## Ollama Support
+
+Ollama support is available by uncommenting the Ollama model dependency and module block.
+
 ## References
 
 - [NestJS AI Documentation](https://nestjs-port.github.io/nestjs-ai/api/chatclient.html)

@@ -15,6 +15,7 @@ The prompt chaining pattern is useful when:
 
 - Anthropic chat model integration through `@nestjs-ai/model-anthropic`
 - OpenAI support is available by uncommenting the OpenAI model dependency and module block
+- Ollama support is available by uncommenting the Ollama model dependency and module block
 - A four-step prompt chain that transforms a numeric report into a markdown table
 
 ## Prerequisites

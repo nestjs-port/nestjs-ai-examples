@@ -72,6 +72,10 @@ The implementation consists of two main components:
 
 OpenAI support is available by uncommenting the OpenAI model dependency and module block.
 
+## Ollama Support
+
+Ollama support is available by uncommenting the Ollama model dependency and module block.
+
 ## References
 
 - [Building Effective Agents](https://www.anthropic.com/research/building-effective-agents) - Anthropic Research

@@ -21,7 +21,7 @@
     "@nestjs-ai/mcp-annotations": "^0.1.5",
     "@nestjs-ai/mcp-common": "^0.1.6",
     "@nestjs-ai/mcp-server": "^0.1.5",
-    "@nestjs-ai/model": "^0.1.4",
+    "@nestjs-ai/model": "^0.1.5",
     "@nestjs-ai/platform": "^0.1.2",
     "@nestjs-port/core": "^0.1.1",
     "@nestjs/common": "^11.1.20",

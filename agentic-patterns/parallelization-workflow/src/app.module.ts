@@ -1,6 +1,7 @@
 import { Module } from "@nestjs/common";
 import { NestAiModule } from "@nestjs-ai/platform";
 import { AnthropicChatModelModule } from "@nestjs-ai/model-anthropic";
+// import { OllamaChatModelModule } from "@nestjs-ai/model-ollama";
 // import { OpenAiChatModelModule } from "@nestjs-ai/model-openai";
 import { ParallelizationWorkflow } from "./parallelization-workflow";
 
@@ -24,6 +25,16 @@ function requireAnthropicApiKey(): string {
     //       model: process.env.OPENAI_MODEL ?? "gpt-4o-mini",
     //       temperature: 0,
     //       maxTokens: 1200,
+    //     },
+    //   }),
+    // }),
+    // OllamaChatModelModule.forFeatureAsync({
+    //   useFactory: async () => ({
+    //     baseUrl: process.env.OLLAMA_BASE_URL ?? "http://localhost:11434",
+    //     options: {
+    //       model: process.env.OLLAMA_MODEL ?? "llama3.2:latest",
+    //       temperature: 0,
+    //       numPredict: 1200,
     //     },
     //   }),
     // }),

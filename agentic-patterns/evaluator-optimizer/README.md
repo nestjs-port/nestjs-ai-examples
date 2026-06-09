@@ -94,6 +94,10 @@ The pattern can be customized through:
 
 OpenAI is the default model path for this sample. Anthropic support is available by uncommenting the Anthropic model dependency and module block.
 
+## Ollama Support
+
+Ollama support is available by uncommenting the Ollama model dependency and module block.
+
 ## Dependencies
 
 - NestJS AI
