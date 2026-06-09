@@ -16,6 +16,10 @@ A collection of NestJS AI examples.
 - `agentic-patterns/orchestrator-workers` - A workflow where an orchestrator breaks work apart and workers run in parallel
 - `agentic-patterns/evaluator-optimizer` - A workflow that repeats generation and evaluation
 
+### Advisors
+
+- `advisors/evaluation-recursive-advisor-demo` - A recursive judge-and-refine workflow with Anthropic and Ollama
+
 ### Model Context Protocol
 
 - `model-context-protocol/sampling/mcp-sampling-server` - An MCP server that fetches weather data and delegates poem generation through sampling
