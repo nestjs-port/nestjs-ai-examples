@@ -17,8 +17,8 @@
 import { Logger } from "@nestjs/common";
 import { ChatClient } from "@nestjs-ai/client-chat";
 import {
-  BaseAdvisor,
-  type AdvisorChain,
+    CallAdvisor,
+    StreamAdvisor,
   type CallAdvisorChain,
   type StreamAdvisorChain,
 } from "@nestjs-ai/client-chat";
@@ -98,7 +98,7 @@ export interface SelfRefineEvaluationAdvisorProps {
  *
  * @author Christian Tzolov
  */
-export class SelfRefineEvaluationAdvisor extends BaseAdvisor {
+export class SelfRefineEvaluationAdvisor implements CallAdvisor, StreamAdvisor {
   private static readonly logger = new Logger(SelfRefineEvaluationAdvisor.name);
   static readonly DEFAULT_EVALUATION_PROMPT_TEMPLATE = new PromptTemplate(
     DEFAULT_EVALUATION_PROMPT_TEMPLATE,
@@ -124,8 +124,6 @@ export class SelfRefineEvaluationAdvisor extends BaseAdvisor {
     skipEvaluationPredicate = (request, response) =>
       response.chatResponse == null || response.chatResponse.hasToolCalls(),
   }: SelfRefineEvaluationAdvisorProps) {
-    super();
-
     this.chatClient = chatClientBuilder.build();
     this.evaluationPromptTemplate = promptTemplate;
     this.advisorOrder = advisorOrder;
@@ -213,25 +211,11 @@ export class SelfRefineEvaluationAdvisor extends BaseAdvisor {
     throw new Error("Unexpected loop exit in adviseCall");
   }
 
-  override adviseStream(
+  adviseStream(
     _chatClientRequest: ChatClientRequest,
     _streamAdvisorChain: StreamAdvisorChain,
   ): Observable<ChatClientResponse> {
     throw new Error("The Evaluation Advisor does not support streaming.");
-  }
-
-  override async before(
-    chatClientRequest: ChatClientRequest,
-    _advisorChain: AdvisorChain,
-  ): Promise<ChatClientRequest> {
-    return chatClientRequest;
-  }
-
-  override async after(
-    chatClientResponse: ChatClientResponse,
-    _advisorChain: AdvisorChain,
-  ): Promise<ChatClientResponse> {
-    return chatClientResponse;
   }
 
   /**
