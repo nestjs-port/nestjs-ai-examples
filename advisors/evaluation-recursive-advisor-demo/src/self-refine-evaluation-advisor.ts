@@ -17,8 +17,8 @@
 import { Logger } from "@nestjs/common";
 import { ChatClient } from "@nestjs-ai/client-chat";
 import {
-    CallAdvisor,
-    StreamAdvisor,
+  CallAdvisor,
+  StreamAdvisor,
   type CallAdvisorChain,
   type StreamAdvisorChain,
 } from "@nestjs-ai/client-chat";
