@@ -18,6 +18,7 @@ A collection of NestJS AI examples.
 
 ### Advisors
 
+- `advisors/recursive-advisor-demo` - A recursive tool-calling workflow using the built-in `ToolCallAdvisor` with a custom logging advisor
 - `advisors/evaluation-recursive-advisor-demo` - A recursive judge-and-refine workflow with Anthropic and Ollama
 
 ### Model Context Protocol
